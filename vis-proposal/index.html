@@ -10,8 +10,18 @@
 
     <title>Vis Project Proposal</title>
     <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
         #header {
             margin-top: 24px;
+        }
+        .jumbotron {
+            background-color: #DAD4C0;
+            font-weight: bolder;
+        }
+        #content {
+            margin-top: -10px;
         }
     </style>
 </head>
@@ -20,7 +30,9 @@
     <div class="container">
         <div class="row" id="header">
             <div class="col-md-12">
-                <h1>CSE457A - Project Proposal</h1>
+                <div class="jumbotron">
+                    <h1 class="display-4">CSE 457A Final Project Proposal</h1>
+                </div>
             </div>
         </div>
         <br><br>
@@ -47,14 +59,13 @@
                             aria-controls="v-pills-project-schedule" aria-selected="false">Project Schedule</a>
                 </div>
             </div>
-            <div class="col-9">
+            <div class="col-9" id="content">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-basic-info" role="tabpanel" aria-labelledby="v-pills-basic-info-tab">
-                        <h1 class="headers">MLB Pitch Characteristics</h1>
-                        <h4>Team Members: Ryan Loutos, Mitchell Black</h4>
-                        <h5>WUSTL IDs: 455135, 455128</h5>
-                        <h5>Emails: ryanloutos@wustl.edu, mitchell.black@wustl.edu</h5>
-                        <h6>https://github.com/ryanloutos/MLBPitchCharacteristics</h6>
+                        <h1>MLB Pitch Characteristics</h1>
+                        <p>Ryan Loutos; 455135; ryanloutos@wustl.edu</p>
+                        <p>Mitchell Black; 455428; mitchell.black@wustl.edu</p>
+                        <a href="https://github.com/ryanloutos/MLBPitchCharacteristics">GitHub Repository</a>
                     </div>
                     <div class="tab-pane fade" id="v-pills-background-motivation" role="tabpanel" aria-labelledby="v-pills-background-motivation-tab">
                         <h1>Background and Motivation</h1>
@@ -107,16 +118,34 @@
                             Python, we will be able to get all of our data organized in .json or .csv form.
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-visualization-design" role="tabpanel" aria-labelledby="v-pills-visualization-design-tab">...
+                    <div class="tab-pane fade" id="v-pills-visualization-design" role="tabpanel" aria-labelledby="v-pills-visualization-design-tab">
+                        <h1>Visualization Design</h1>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-must-have-features" role="tabpanel" aria-labelledby="v-pills-must-have-features-tab">...
+                    <div class="tab-pane fade" id="v-pills-must-have-features" role="tabpanel" aria-labelledby="v-pills-must-have-features-tab">
+                        <h1>Must-Have Features</h1>
+                        <div>
+                            <ul>
+                                <li></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-optional-features" role="tabpanel" aria-labelledby="v-pills-optional-features-tab">...
+                    <div class="tab-pane fade" id="v-pills-optional-features" role="tabpanel" aria-labelledby="v-pills-optional-features-tab">
+                        <h1>Optional Features</h1>
+                        <div>
+                            <ul>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-project-schedule" role="tabpanel" aria-labelledby="v-pills-project-schedule-tab">
+                        <h1>Project Schedule</h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <br><br><br><br>
 
     <!-- JQuery -->
     <script src="js/jquery-3.5.1.min.js"></script>
