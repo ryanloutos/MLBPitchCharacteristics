@@ -1,0 +1,25 @@
+Data Collection Plan
+
+- pybaseball 2020 (at least initially)
+- Organize by pitcher
+    - Array of pitcher dictionaries
+        - name
+        - RHP (bool)
+        - Dictionaries for each pitch type
+            - FF (fourseam fastball), SL (slider), CU (curveball), SI (sinker), FC (cut fastball), 
+                CH (changeup), KC (knuckle curve), FS (split-finger)
+            - Velocity average
+            - Spin rate average
+            - Vertical movement average
+            - Horizontal movement average
+            - Swing and miss %
+            - Usage %
+            - Bauer units
+            - Pitch locations (array of x and z positions)
+        - Pitch counts
+            - all pitch counts  
+            - for each pitch count, have usage percentages
+            - for each count, % ball and % strike
+- Organization by pitcher (only have fastball data to compare to for similarity)
+
+        
