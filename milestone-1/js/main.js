@@ -67,7 +67,7 @@ function setup_profile_input(){
  * "threshold" variable. 
  */
 function get_pitchers(h_move, v_move, rpm, velo, b_units){
-    $.getJSON("/milestone-1/data/pitcher_data.json", function(data){
+    $.getJSON("/milestone-1/data/fastball_data.json", function(data){
 
         $("#pitchers-select-list").empty();
         var passed_pitchers = []
@@ -75,17 +75,11 @@ function get_pitchers(h_move, v_move, rpm, velo, b_units){
         data.forEach(pitcher => {
             // console.log(pitcher)
             let name = pitcher.name
-            let fb = null;
-            // get primary fastball pitch
-            if(pitcher.pitches.FF.velocity != 0){
-                fb = pitcher.pitches.FF
-            } else if(pitcher.pitches.SI.velocity != 0){
-                fb = pitcher.pitches.SI
-            } else if(pitcher.pitches.FC.velocity != 0){
-                fb = pitcher.pitches.FC
-            } else {
-                // skips over the rest of loop for this pitcher
-                return;
+            let fb = pitcher.data;
+
+            // skip if no fastball data
+            if(fb.velocity == 0){
+                return
             }
 
             // base similarity metric
@@ -134,7 +128,7 @@ function get_pitchers(h_move, v_move, rpm, velo, b_units){
 function display_pitcher_graphics(name){
     // console.log(`Selected Player: ${name}`)
 
-    $.getJSON("/milestone-1/data/fastball_data.json", function(data){
+    $.getJSON("/milestone-1/data/pitcher_data.json", function(data){
 
         for(let d in data){
             if(data[d].name == name){
