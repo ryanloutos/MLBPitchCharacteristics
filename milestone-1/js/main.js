@@ -36,6 +36,8 @@ function setup_profile_input(){
 
     })
 
+    /**Helper function to calculate bauer units
+     */
     function update_bauer_units(){
         let rpm = +$("#spin-rate-slider").val();
         let velo = +$("#velo-slider").val();
@@ -44,11 +46,26 @@ function setup_profile_input(){
         $("#bauer-units-label").text(b_units.toFixed(2))
     }
 
+    /**Helper function to update the movement profile graphic
+     */
     function update_movement_profile(){
         console.log("NEED TO IMPLEMENT")
     }
 }
 
+/**
+ * @summary Fetch pitchers from data who have similarities
+ * 
+ * @param  {Number} h_move Horizontal movement in inches
+ * @param  {Number} v_move Vertical movement in inches
+ * @param  {Number} rpm Spin rate in RPM
+ * @param  {Number} velo Velocity in MPH
+ * @param  {Number} b_units Bauer Units
+ * 
+ * @description Populates the list of pitchers with pitchers who have a similarity in
+ * the parameter metrics. The similarity threshold is dictated by the 
+ * "threshold" variable. 
+ */
 function get_pitchers(h_move, v_move, rpm, velo, b_units){
     $.getJSON("/milestone-1/data/pitcher_data.json", function(data){
 
@@ -95,7 +112,16 @@ function get_pitchers(h_move, v_move, rpm, velo, b_units){
         passed_pitchers.sort((a, b) => (a.sim < b.sim) ? 1 : -1)
         passed_pitchers.forEach(function(p){
             let link = $(`<a class="list-group-item-action d-flex justify-content-between">${p.name}<span class="badge badge-light badge-pill">${p.sim.toFixed(0)} %</span></a>`)
-            link.click(function(event){display_pitcher_graphics(event)});
+
+            link.click(function(event){
+
+                // Set selection to active
+                $("#pitchers-select-list").children().removeClass("active");
+                link.addClass("active");
+
+                display_pitcher_graphics(p.name)
+            });
+
             $("#pitchers-select-list").append(link);
         })
     })
@@ -105,15 +131,21 @@ function get_pitchers(h_move, v_move, rpm, velo, b_units){
     }
 }
 
-function display_pitcher_graphics(event){
-    console.log(event)
-    let data = get_data();
+function display_pitcher_graphics(name){
+    // console.log(`Selected Player: ${name}`)
+
+    $.getJSON("/milestone-1/data/fastball_data.json", function(data){
+
+        for(let d in data){
+            if(data[d].name == name){
+                // console.log("player found")
+                setup_visualization(data[d])
+                break;
+            }
+        }
+    })
 }
 
-function get_data(){
-    return null;
-}
-
-function setup_visualization(){
-    let plinko = new pitch_counts_plinko("plinko", 500, 500);
+function setup_visualization(data){
+    let plinko = new pitch_counts_plinko("plinko", 500, 500, data=data);
 }
