@@ -53,6 +53,8 @@ function get_pitchers(h_move, v_move, rpm, velo, b_units){
     $.getJSON("/milestone-1/data/pitcher_data.json", function(data){
 
         $("#pitchers-select-list").empty();
+        var passed_pitchers = []
+
         data.forEach(pitcher => {
             // console.log(pitcher)
             let name = pitcher.name
@@ -74,24 +76,42 @@ function get_pitchers(h_move, v_move, rpm, velo, b_units){
             // to the selectable list of pitchers
             let threshold = 0.1;
 
-            if (get_pct_threshold(h_move, fb.hor_movement, threshold) &&
-                get_pct_threshold(v_move, fb.vert_movement, threshold) &&
-                get_pct_threshold(b_units, fb.bauer_units, threshold)){
-                    console.log(pitcher)
-                    $("#pitchers-select-list").append(`<li>${name}</li>`);
-                }
+            let t1 = get_pct_threshold(h_move, fb.hor_movement)
+            let t2 = get_pct_threshold(v_move, fb.vert_movement)
+            let t3 = get_pct_threshold(b_units, fb.bauer_units)
 
+            let avg = Math.abs((t1 + t2 + t3) / 3)
+
+            if (avg < threshold){
+                    // console.log(pitcher)
+                    // console.log(`Average: ${avg}`)
+                    let similarity = (1 - avg) * 100
+                    passed_pitchers.push({name: name, sim: similarity})
+            }
 
         });
+
+        // console.log(passed_pitchers)
+        passed_pitchers.sort((a, b) => (a.sim < b.sim) ? 1 : -1)
+        passed_pitchers.forEach(function(p){
+            let link = $(`<a class="list-group-item-action d-flex justify-content-between">${p.name}<span class="badge badge-light badge-pill">${p.sim.toFixed(0)} %</span></a>`)
+            link.click(function(event){display_pitcher_graphics(event)});
+            $("#pitchers-select-list").append(link);
+        })
     })
 
-    function get_pct_threshold(amatuer, mlb, threshold){
-        return ((amatuer - mlb) / mlb) > threshold ? false : true ;
+    function get_pct_threshold(amatuer, mlb){
+        return ((amatuer - mlb) / mlb)
     }
 }
 
-function get_data(){
+function display_pitcher_graphics(event){
+    console.log(event)
+    let data = get_data();
+}
 
+function get_data(){
+    return null;
 }
 
 function setup_visualization(){

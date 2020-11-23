@@ -63,25 +63,25 @@
                     <div class="col-3">
                         <div class="row">
                             <h5>Horizontal Movement: </h5>
-                            <label id="h-movement-label" for="h-movement-slider">0</label>
-                            <input type="range" class="custom-range" min="-15" max="15" step="0.2" id="h-movement-slider">
+                            <label id="h-movement-label" for="h-movement-slider">-1</label>
+                            <input type="range" class="custom-range" value="-1" min="-15" max="15" step="0.2" id="h-movement-slider">
                         </div>
                         <div class="row">
                             <h5>Vertical Movement: </sph5an>
                             <label id="v-movement-label" for="v-movement-slider">0</label>
-                            <input type="range" class="custom-range" min="-15" max="15" step="0.2" id="v-movement-slider">
+                            <input type="range" class="custom-range" value="0" min="-15" max="15" step="0.2" id="v-movement-slider">
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="row">
                             <h5>Spin Rate: </h5>
                             <label id="spin-rate-label" for="spin-rate-slider">3000</label>
-                            <input type="range" class="custom-range" min="1500" max="4500" step="50" id="spin-rate-slider">
+                            <input type="range" class="custom-range" value="3000" min="1500" max="4500" step="50" id="spin-rate-slider">
                         </div>
                         <div class="row">
                             <h5>Velocity: </h5>
                             <label id="velo-label" for="velo-slider">85</label>
-                            <input type="range" class="custom-range" min="65" max="105" step="0.5" id="velo-slider">
+                            <input type="range" class="custom-range" value="85" min="65" max="105" step="0.5" id="velo-slider">
                         </div>
                     </div>
                     <div class="col-3">
@@ -108,7 +108,8 @@
         </div>
         <div class="row">
             <div class="col-3" id="pitcher-select">
-                <ul id="pitchers-select-list"></ul>
+                <h4>Select Pitcher:</h4>
+                <div id="pitchers-select-list" class="list-group"></div>
             </div>
             <div class="col-9" id="plinko"></div>
         </div>
