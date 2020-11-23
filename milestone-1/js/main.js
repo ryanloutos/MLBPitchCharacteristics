@@ -3,6 +3,17 @@ var plinko;
 var movement;
 var locations;
 
+var colors = {
+    FF: "rgb(230, 25, 75)",
+    SI: "rgb(245, 130, 48)",
+    FC: "rgb(255, 255, 25)",
+    SL: "rgb(60, 180, 75)",
+    CU: "rgb(70, 240, 240)",
+    KC: "rgb(0, 130, 200)",
+    CH: "rgb(145, 30, 180)",
+    FS: "rgb(240, 50, 230)"
+}
+
 setup_profile_input();
 setup_visualizations();
 
@@ -160,7 +171,7 @@ function display_pitcher_graphics(name){
 function setup_visualizations(){
     let height = 500;
 
-    movement = new pitcher_movement_profile("pitch-movement", $("#pitch-movement").width(), height / 2)
+    movement = new pitcher_movement_profile("pitch-movement", $("#pitch-movement").width(), height / 2, colors)
     locations = new pitcher_pitch_locations("pitch-locations", $("#pitch-locations").width(), height/2)
     plinko = new pitch_counts_plinko("plinko", 500, height)
 }

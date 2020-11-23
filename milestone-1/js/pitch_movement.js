@@ -1,11 +1,12 @@
 
 class pitcher_movement_profile{
 
-    constructor(div_id, width, height, data=null){
+    constructor(div_id, width, height, colors, data=null){
         var self = this;
 
         self.margin = {left: 5, right: 5, top: 5, bottom: 5}
         self.data = data;
+        self.colors = colors;
 
         self.height = height - self.margin.top - self.margin.bottom;
         self.width = width - self.margin.right - self.margin.left;
@@ -81,6 +82,8 @@ class pitcher_movement_profile{
                 .attr("cx", d => self.xScale(d.hor_movement))
                 .attr("cy", d => self.yScale(d.vert_movement))
                 .attr("r", circle_radius)
-                .attr("fill", "black")
+                .attr("fill", d => self.colors[d.type])
+                .attr("stroke", "black")
+                .attr("stroke-width", 1)
     }
 }
