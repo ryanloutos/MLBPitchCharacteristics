@@ -40,6 +40,7 @@
             border: 1px solid black;
             border-radius: var(--border-radius);
             padding: var(--border-padding);
+            height: 500px;
         }
 
         #pitcher-select ul {
@@ -107,11 +108,27 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-3" id="pitcher-select">
+            <div class="col-3 overflow-auto" id="pitcher-select">
                 <h4>Select Pitcher:</h4>
                 <div id="pitchers-select-list" class="list-group"></div>
             </div>
-            <div class="col-9" id="plinko"></div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-12">
+                                <div id="pitch-movement"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="pitch-locations"></div>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div id="plinko"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -126,6 +143,8 @@
     <script src="js/d3.min.js"></script>
 
     <script src="js/plinko.js"></script>
+    <script src="js/pitch_movement.js"></script>
+    <script src="js/pitch_locations.js"></script>
     <script src="js/main.js"></script>
 </body>
 

@@ -1,4 +1,10 @@
+bounds_helper();
+var plinko;
+var movement;
+var locations;
+
 setup_profile_input();
+setup_visualizations();
 
 function setup_profile_input(){
     // Default readings
@@ -77,6 +83,10 @@ function get_pitchers(h_move, v_move, rpm, velo, b_units){
             let name = pitcher.name
             let fb = pitcher.data;
 
+            // convert feet to inches
+            fb.hor_movement = fb.hor_movement * 12
+            fb.vert_movement = fb.vert_movement * 12
+
             // skip if no fastball data
             if(fb.velocity == 0){
                 return
@@ -133,13 +143,68 @@ function display_pitcher_graphics(name){
         for(let d in data){
             if(data[d].name == name){
                 // console.log("player found")
-                setup_visualization(data[d])
+
+                // convert feet to inches
+                Object.values(data[d].pitches).forEach(function(d){
+                    d.hor_movement = d.hor_movement * 12
+                    d.vert_movement = d.vert_movement * 12
+                })
+
+                update_visualizations(data[d])
                 break;
             }
         }
     })
 }
 
-function setup_visualization(data){
-    let plinko = new pitch_counts_plinko("plinko", 500, 500, data=data);
+function setup_visualizations(){
+    let height = 500;
+
+    movement = new pitcher_movement_profile("pitch-movement", $("#pitch-movement").width(), height / 2)
+    locations = new pitcher_pitch_locations("pitch-locations", $("#pitch-locations").width(), height/2)
+    plinko = new pitch_counts_plinko("plinko", 500, height)
+}
+
+function update_visualizations(data){
+    plinko.set_data(data);
+    movement.set_data(data);
+    locations.set_data(data);
+}
+
+
+function bounds_helper(){
+    $.getJSON("/milestone-1/data/pitcher_data.json", function(data){
+        console.log(data)
+        console.log("FF")
+        console.log(d3.extent(data, d => d.pitches.FF.hor_movement))
+        console.log(d3.extent(data, d => d.pitches.FF.vert_movement))
+
+        console.log("SI")
+        console.log(d3.extent(data, d => d.pitches.SI.hor_movement))
+        console.log(d3.extent(data, d => d.pitches.SI.vert_movement))
+
+        console.log("CH")
+        console.log(d3.extent(data, d => d.pitches.CH.hor_movement))
+        console.log(d3.extent(data, d => d.pitches.CH.vert_movement))
+
+        console.log("CU")
+        console.log(d3.extent(data, d => d.pitches.CU.hor_movement))
+        console.log(d3.extent(data, d => d.pitches.CU.vert_movement))
+
+        console.log("FC")
+        console.log(d3.extent(data, d => d.pitches.FC.hor_movement))
+        console.log(d3.extent(data, d => d.pitches.FC.vert_movement))
+
+        console.log("FS")
+        console.log(d3.extent(data, d => d.pitches.FS.hor_movement))
+        console.log(d3.extent(data, d => d.pitches.FS.vert_movement))
+
+        console.log("KC")
+        console.log(d3.extent(data, d => d.pitches.KC.hor_movement))
+        console.log(d3.extent(data, d => d.pitches.KC.vert_movement))
+
+        console.log("SL")
+        console.log(d3.extent(data, d => d.pitches.SL.hor_movement))
+        console.log(d3.extent(data, d => d.pitches.SL.vert_movement))
+    })
 }
