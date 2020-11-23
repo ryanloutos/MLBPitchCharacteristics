@@ -10,6 +10,12 @@
 
     <title>Milestone 1</title>
     <style>
+
+        :root {
+            --border-radius: 5px;
+            --border-padding: 5px;
+        }
+
         body {
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
@@ -23,6 +29,22 @@
         #content {
             margin-top: -10px;
         }
+
+        #pitch-profile-enter {
+            border: 1px solid black;
+            border-radius: var(--border-radius);
+            padding: var(--border-padding);
+        }
+
+        #pitcher-select {
+            border: 1px solid black;
+            border-radius: var(--border-radius);
+            padding: var(--border-padding);
+        }
+
+        #pitcher-select ul {
+            list-style-type: none;
+        }
     </style>
 </head>
 
@@ -35,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div id="pitch-profile-enter" class="row">
             <div class="col-12">
                 <div class="row">
                     <div class="col-3">
@@ -85,7 +107,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12" id="plinko"></div>
+            <div class="col-3" id="pitcher-select">
+                <ul id="pitchers-select-list"></ul>
+            </div>
+            <div class="col-9" id="plinko"></div>
         </div>
     </div>
 
