@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <title>Vis Project Process Book</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        #header {
+            margin-top: 24px;
+        }
+        .jumbotron {
+            background-color: #DAD4C0;
+            font-weight: bolder;
+        }
+        #content {
+            margin-top: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" id="header">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1 class="display-4">CSE 457A Final Project Process Book</h1>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-basic-info-tab" data-toggle="pill" href="#v-pills-basic-info" role="tab"
+                        aria-controls="v-pills-basic-info" aria-selected="true">Basic Info</a>
+
+                    <a class="nav-link" id="v-pills-overview-motivation-tab" data-toggle="pill" href="#v-pills-overview-motivation" role="tab"
+                        aria-controls="v-pills-overview-motivation" aria-selected="false">Overview and Motivation</a>
+
+                    <a class="nav-link" id="v-pills-project-objectives-tab" data-toggle="pill" href="#v-pills-project-objectives" role="tab"
+                        aria-controls="v-pills-project-objectives" aria-selected="false">Project Questions</a>
+
+                    <a class="nav-link" id="v-pills-data-tab" data-toggle="pill" href="#v-pills-data" role="tab"
+                        aria-controls="v-pills-data" aria-selected="false">Data</a>
+
+                    <a class="nav-link" id="v-pills-data-processing-tab" data-toggle="pill" href="#v-pills-data-processing" role="tab"
+                        aria-controls="v-pills-data-processing" aria-selected="false">Data Analysis</a>
+    
+                    <a class="nav-link" id="v-pills-design-evolution-tab" data-toggle="pill" href="#v-pills-design-evolution" role="tab"
+                        aria-controls="v-pills-design-evolution" aria-selected="false">Design Evolution</a>
+                    
+                    <a class="nav-link" id="v-pills-implementation-tab" data-toggle="pill" href="#v-pills-implementation" role="tab"
+                        aria-controls="v-pills-implementation" aria-selected="false">Implementation</a>
+
+                    <a class="nav-link" id="v-pills-evaluation-tab" data-toggle="pill" href="#v-pills-evaluation" role="tab"
+                        aria-controls="v-pills-evaluation" aria-selected="false">Evaluation</a>
+
+                </div>
+            </div>
+            <div class="col-9" id="content">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-basic-info" role="tabpanel" aria-labelledby="v-pills-basic-info-tab">
+                        <h1>MLB Pitch Characteristics</h1>
+                        <p>Ryan Loutos; 455135; ryanloutos@wustl.edu</p>
+                        <p>Mitchell Black; 455428; mitchell.black@wustl.edu</p>
+                        <a href="https://github.com/ryanloutos/MLBPitchCharacteristics">GitHub Repository</a>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-overview-motivation" role="tabpanel" aria-labelledby="v-pills-overview-motivation-tab">
+                        <h1>Overview and Motivation</h1>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;
+                            Both of us are baseball players here at WashU, and have always been passionate and interested in the game. 
+                            Anytime we do a project together, our minds tend to go toward baseball related topics, as the game 
+                            has gotten so analytical over recent years. Since around 2015, MLB baseball collects a ridiculous amount
+                            of data for every game and every pitch thrown. There is public data on exactly how much a ball moves, how fast a player
+                            sprints, the exact positions of players on the field, and much more. 
+                        </div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;
+                            &Tab; Also over the last few years, technological devices have come about that let players of all ages also collect 
+                            very detailed data to make their development as a player more data driven. As pitchers, collecting this data using
+                            these devices is super easy, but analysis is not. As more and more data is getting thrown at players, it makes it 
+                            harder and harder to determine exactly what to do with it, and what are some next steps to take. 
+                        </div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;
+                            &Tab; We want to make analysis of this data easier, by creating a tool to allow pitches of all ages to compare their 
+                            pitch characteristics with the guys in the MLB. This will make it easy for them to see how the best get hitters
+                            out, and give them goals with offspeed pitches, locations, and usages that they can take into their development
+                            and the game. We want to help players use the data to their advantage, instead of getting bombarded and overwhelmed. 
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-project-objectives" role="tabpanel" aria-labelledby="v-pills-project-objectives-tab">
+                        <h1>Project Questions</h1>
+                        <div>
+                            <ul>
+                                <li>What MLB pitchers throw similarly to me?</li>
+                                <li>Of those MLB pitchers, who has the most effective offspeed pitches?</li>
+                                <li>Of those MLB pitchers, what do those offspeed pitches look like? How do they move?</li>
+                                <li>Where do these pitchers throw their offspeed pitches? Low, high, left, right?</li>
+                                <li>What counts do these pitchers throw these pitches in?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-data" role="tabpanel" aria-labelledby="v-pills-data-tab">
+                        <h1>Data</h1>
+                        <div>
+                            The is a public Python package called pybaseball (https://github.com/jldbc/pybaseball) which is a webscraper
+                            that pulls all of the statcast data from public websites. This makes it easy to collect a large amount of data
+                            so we can manipulate it how we want to.
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-data-processing" role="tabpanel" aria-labelledby="v-pills-data-processing-tab">
+                        <h1>Data Analysis</h1>
+                        <div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            Both of us are very proficient is Python, and will do most of our data maniupation and organization using Pandas
+                            once all of the data is collected. The first step is to get all the pitches collected, and then we will need to
+                            organize by pitcher and calculate any necessary statistics, averages, etc. With some basic data manipulation in 
+                            Python, we will be able to get all of our data organized in .json or .csv form.
+                        </div>
+                        <div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            The jupyter notebook contained within the vis-data-collection folder of this project details how we ended up
+                            collecting the data. We have 2 main data files, fastball_data.json and pitcher_data.json. fastball_data.json is
+                            a much smaller subset of the data contained within pitcher_data.json. Its purpose it to allow rapid loading of key
+                            information which we need to determine similarities between users and MLB pitchers. From there, once a comparison
+                            has been selected, the full data set is grabbed from pitcher_data.json. It contains the performance of each
+                            individual pitch, as well as pitch usage information for the pitcher over a season.
+                        </div>
+                        <div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            Our insights on this data came from examples on <a href="https://baseballsavant.mlb.com">https://baseballsavant.mlb.com</a>. 
+                            Here, the MLB stores and displays a lot of the current statistical information it records. It is, however, very dense and often
+                            hard to gather information from if the user is not well versed in both baseball knowledge and the website.
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-design-evolution" role="tabpanel" aria-labelledby="v-pills-design-evolution-tab">
+                        <h1>Design Evolution</h1>
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="viz-prototype-toggle" data-toggle="pill" href="#viz-prototype-tab" role="tab" aria-controls="prototype-tab" aria-selected="true">Visualization Design</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="viz-milestone-1-toggle" data-toggle="pill" href="#viz-milestone-1-tab" role="tab" aria-controls="milestone-1-tab" aria-selected="false">Milestone 1</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="viz-prototype-tab" role="tabpanel" aria-labelledby="prototype-tab">
+                                <div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>
+                                                This is our first graphic design iteration. It is a pretty rough sketch of what information we will eventually want to show.
+                                                Included are an input box, a similar player selection box, and some rough sketches of diagram types, which are more clear
+                                                later.
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <img class="img-fluid" src="img/proposal/graphic_design_1.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>
+                                                Our second graphic design iteration attempts at clearly defining the elemnts though of in design 1. It includes an input box of defined
+                                                characteristics and  a player selection based on various similarity metrics. The diagrams are a combined heat map and spray comparison
+                                                between you and an mlb pitcher. There is also trickle down chart for pitch usage in different situation.
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <img class="img-fluid" src="img/proposal/graphic_design_2.jpeg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>
+                                                This is a half improvement on the last itertion. It separates the heat map and spray charts. They are both easier to undersatnd and achieve
+                                                their goals in a more accurate manner.
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <img class="img-fluid" src="img/proposal/graphic_design_2.5.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>
+                                                This is our third graphic design iteration. It changes the combined spray into a 3d pitch characteristic diagram. This is too
+                                                advanced for our tools and the time frame allotted. It also is too complicated for a user to understand possibly. We believe that we
+                                                can display the same information in a simpler fashion that is also more effective.
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <img class="img-fluid" src="img/proposal/graphic_design_3.jpeg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>
+                                                This is our final graphic design iteration. It combines elements from all of the above iterations. From the vetted input characteristics, 
+                                                to the similarity metrics calculations it is simpler and more comprehensive for the user. We chose the heatmap and trickle down charts because
+                                                they demonstrate how the best of the best utilize their tools in a simple manner. The pitch usage by count is important as well because it defines
+                                                the trends necessary to succeed no matter the competition level.
+            
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <img class="img-fluid" src="img/proposal/graphic_design_final.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="viz-milestone-1-tab" role="tabpanel" aria-labelledby="milestone-1-tab">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="img-fluid">
+                                            <img src="/process-book/img/milestone-1/full-page.png" alt="Full Page">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p>
+                                            The designs completed for milestone 1 focus mainly on a proof of concept. Our data analysis section is
+                                            so intense that it dominated the time we would have used to refine the visualizations. What we managed to
+                                            accomplish in this milestone is a demonstration of the data entry, user selection, and information distinction.
+                                        </p>
+                                        <p>
+                                            The data entry section was designed to limit user input to only necessary items, and to remove as much possibility
+                                            of error as possible. Our player selection window thus populates based on similarity threshold which is at the moment
+                                            rudimentary. However it does show that our concept is feasible.
+                                        </p>
+                                        <p>
+                                            The actual visualizations are the movement profile display and the pitch usage display. The movement profile display
+                                            attempts to show the range of tools with which this pitcher can be effective. Our goals for refining this are to
+                                            include tooltips for precise information, as well as a polygon connectecting all of the points from the outside. The
+                                            tooltip will display the information more precisely, and the polygon will further portray the range of weapons available.
+                                        </p>
+                                        <p>
+                                            The pitch usage chart attempts to show how MLB pitchers best usee their discussed weapons at different times. The colors represent
+                                            different pitches, and the sizes of the pie-charts represent the frequency that the pitcher is in this situation. Our next iteration
+                                            on this chart will have tooltips for the percentages of each pie chart, edge weights between nodes showing connections
+                                            between counts, labels above different scenarios.
+                                        </p>
+                                        <p>
+                                            In addition to these updates, we will need to display a global legend, as well as possibly some of the raw data which is
+                                            best understood simply on its own.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-implementation" role="tabpanel" aria-labelledby="v-pills-design-evolution-tab">
+                        <div class="row">
+                            <div class="col-12">
+                                <h1>Implementation</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p>
+                                    To be completed as vizualizations evolve
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-evaluation" role="tabpanel" aria-labelledby="v-pills-evaluation-tab">
+                        <div class="row">
+                            <div class="col-12">
+                                <h1>Evaluation</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p>
+                                    To be completed as project evolves
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br><br>
+
+    <!-- JQuery -->
+    <script src="js/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
