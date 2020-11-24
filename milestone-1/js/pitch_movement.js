@@ -25,7 +25,7 @@ class pitcher_movement_profile{
 
         self.yScale = d3.scaleLinear()
             .range([self.margin.top, self.height + self.margin.top])
-            .domain([-24, 24])
+            .domain([24, -24])
     }
 
     set_data(data){
@@ -33,10 +33,10 @@ class pitcher_movement_profile{
         self.data = []
         for(const [key, value] of Object.entries(data.pitches)){
             let temp = value;
-            value.type = key;
+            temp.type = key;
             self.data.push(temp)
         }
-        console.log(self.data)
+        // console.log(self.data)
 
         //Custom axis size
         // self.xScale.domain(d3.extent(self.data, d => d.hor_movement))

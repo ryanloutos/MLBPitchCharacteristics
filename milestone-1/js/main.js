@@ -1,4 +1,4 @@
-bounds_helper();
+// bounds_helper();
 var plinko;
 var movement;
 var locations;
@@ -173,7 +173,7 @@ function setup_visualizations(){
 
     movement = new pitcher_movement_profile("pitch-movement", $("#pitch-movement").width(), height / 2, colors)
     locations = new pitcher_pitch_locations("pitch-locations", $("#pitch-locations").width(), height/2)
-    plinko = new pitch_counts_plinko("plinko", 500, height)
+    plinko = new pitch_counts_plinko("plinko", 500, height, colors)
 }
 
 function update_visualizations(data){
@@ -182,7 +182,8 @@ function update_visualizations(data){
     locations.set_data(data);
 }
 
-
+/** Debug function to help determine the scales necessary for the visualizations
+ */
 function bounds_helper(){
     $.getJSON("/milestone-1/data/pitcher_data.json", function(data){
         console.log(data)
